@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../_services';
 import { environment } from 'src/environments/environment';
+import { EMAIL_PATTERN, USER_INFO } from '../_constants/constants';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,7 @@ export class LoginComponent implements OnInit {
 
   loginForm : FormGroup;
   submitted : boolean;
-  response: any; 
-  SERVER_URL : string;
+  response: any;
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -23,15 +23,23 @@ export class LoginComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit() {
-    //this.SERVER_URL = environment.APIEndPoint;
+    const user = JSON.parse(localStorage.getItem(USER_INFO));
+    if(user)
+    this.router.navigate(['/'+ user.role]);
     this.submitted = false;    
-
     this.loginForm = this.formBuilder.group({
-      userName : ['', Validators.required] ,
-      password : ['' , Validators.required]
+      email : ['', Validators.compose([ Validators.required , Validators.pattern(EMAIL_PATTERN) ]) ] ,
+      password : ['' , Validators.compose([ Validators.required , Validators.minLength(5) ]) ],
+      isAdmin  : [ false, [ Validators.required ]],
+      role : ['user']
+    });
+    this.loginForm.get('role').valueChanges.subscribe((result : any) => {
+      if(result.value)
+        this.loginForm.get('role').patchValue('admin');
+      else
+        this.loginForm.get('role').patchValue('user');
     });
     this.loginForm.valueChanges.subscribe(result => {this.response = undefined; });
-    //this.authService.logOut();
   }
 
   get f() { return this.loginForm.controls; }
@@ -42,23 +50,18 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid) {
       return;
     }
-    //console.log(this.loginForm.value);
-    
     this.authService.login(this.loginForm.value).subscribe(
-    response => this.handleResponse(response),
-    error    => this.handleError(error));
+        response => this.handleResponse(this.loginForm.value),
+        error    => this.handleError(error));
   }
 
 
-  handleResponse(response : any){
-    console.log(response);
+  handleResponse(response : any) {
     this.submitted = false;
     this.response = response;
-    if(response && response.user) {
-      const role = response.user.role;
-      const routerLink = role == 'admin' ? 'admin' : ( role == 'member' ? 'member' : 'user') ;
-      this.router.navigate(['/'+ routerLink]);
-    }
+    const role = response.role;
+    const routerLink = role == 'admin' ? 'admin' : 'user';
+    this.router.navigate(['/'+ routerLink]);
   }
 
   handleError(error : any){    

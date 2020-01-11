@@ -1,1 +1,3 @@
-<p>alert works!</p>
+<div class="alert" [ngClass]="{'alert-success': success , 'alert-danger' : !success }" role="alert">
+    {{ message }}
+</div>

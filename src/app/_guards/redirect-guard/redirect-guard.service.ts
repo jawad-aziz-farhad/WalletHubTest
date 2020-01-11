@@ -11,7 +11,8 @@ export class RedirectGuardService implements CanActivate {
   constructor(private router: Router , private authService : AuthService ) { }
 
   canActivate(route : ActivatedRouteSnapshot , state : RouterStateSnapshot) : Observable<boolean> | Promise<boolean> | boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(this.authService.user);
+    
     if (user) {      
       this.router.navigate(['/'+ user.role ]);
       return true;      

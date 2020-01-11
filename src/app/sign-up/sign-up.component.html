@@ -1,0 +1,116 @@
+<div>
+  
+  <app-slide-show></app-slide-show>
+    
+  <div class="">
+          <div class="">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6 black-theme">
+                        <div class="login-section wrapper-table">
+                            <div class="login-outer wrapper-cell">
+                                  <div class="logo text-light text-center">
+                                    <h2>WalletHub</h2>
+                                  </div>
+                                  
+                                  <form class="login-form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+                                    
+                                    <app-alert *ngIf="response" message="Account registered successfully."></app-alert>
+
+                                    <div class="custom-form">
+
+                                        <div class="form-group">
+                                          <label for="firstName"> First Name</label>
+                                          <input type="text" class="form-control" formControlName="firstName" class="form-control" placeholder="Enter first name" [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }" >
+                                          <div class="invalid-feedback">
+                                            <div *ngIf="f.firstName.hasError('required')">First name is required</div>
+                                          </div> 
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label for="lastName"> Last Name</label>
+                                          <input type="text" class="form-control" formControlName="lastName" class="form-control" placeholder="Enter last name" [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }" >
+                                          <div class="invalid-feedback">
+                                            <div *ngIf="f.lastName.hasError('required')">Last name is required</div>
+                                          </div> 
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label for="userName"> Username</label>
+                                          <input type="text" class="form-control" formControlName="userName" class="form-control" placeholder="Enter username" [ngClass]="{ 'is-invalid': (f.userName.touched && f.userName.errors) || isErrorField('Username') }" >
+                                          <div class="invalid-feedback">
+                                            <div *ngIf="f.userName.hasError('required')">Username is required</div>
+                                            <div *ngIf="isErrorField('Username')">{{ response?.message }}</div>
+                                          </div> 
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label for="userName">Email</label>
+                                          <input type="email" class="form-control" formControlName="email" class="form-control" placeholder="Enter email" [ngClass]="{ 'is-invalid': (f.email.touched && f.email.errors) || isErrorField('Email') }" >
+                                            <div class="invalid-feedback">
+                                              <div *ngIf="f.email.hasError('required')">Email is required</div>
+                                              <div *ngIf="f.email.hasError('pattern')">Email is invalid</div>
+                                              <div *ngIf="isErrorField('email')">{{ response?.message }}</div>
+                                            </div> 
+                                          </div>
+                                          
+
+                                        <div class="form-group">
+                                          <label>Password</label>
+                                          <input type="password" formControlName="password" placeholder="Enter password" class="form-control" [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }" />
+                                          
+                                          <div class="invalid-feedback">
+                                            <div *ngIf="f.password.hasError('required')">Password is required</div>
+                                            <div *ngIf="f.password.hasError('hasNumber')">Must have at least 1 number!</div>
+                                            <div *ngIf="f.password.hasError('hasCapitalCase')">Must have at least 1 UpperCase letter!</div>
+                                            <div *ngIf="f.password.hasError('hasLowerCase')">Must have at least 1 LowerCase letter!</div>
+                                            <div *ngIf="f.password.hasError('minlength')">Must have at least 5 characters.</div>
+                                          </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label>Confirm Password</label>
+                                          <input type="password" formControlName="confirmPassword" placeholder="Confirm password" class="form-control" [ngClass]="{ 'is-invalid': f.confirmPassword.touched && f.confirmPassword.errors }" />
+                                          <div class="invalid-feedback">
+                                            <div *ngIf="f.confirmPassword.hasError('required')">Confirm Password is required</div>
+                                            <div *ngIf="f.confirmPassword.hasError('NoPassswordMatch')">Password doesn't match</div>
+                                          </div>
+                                        </div>
+                                          
+                                          <div class="form-check form-check-inline">
+                                            <input type="checkbox" class="form-check-input" id="agreeToTerms" formControlName="isAgreeToTerms">
+                                            <label class="form-check-label" for="agreeToTerms" >I have read & I agree to the <a href="#" class="text-primary"><strong>terms and conditions</strong></a></label>
+                                          </div>
+
+                                          
+                                            <div class="row mt-2">
+                                              <div class="col text-left m-0"></div>
+                                              <div class="col text-right text-light">
+                                                <a routerLink="/login">Go back to Login</a>
+                                              </div>
+                                            </div>
+                                          
+                                      </div>                                      
+
+                                      <div class="twitter-button text-center my-3">
+                                        <button type="submit" class="btn btn-twitter" [disabled]="signUpForm.invalid" >
+                                          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="submitted"></span>
+                                          <span class="sr-only" *ngIf="submitted">Loading...</span>
+                                          Register
+                                        </button>
+                                      </div>
+
+                                      
+                                  </form>
+                                 
+                                  <app-footer></app-footer>
+
+                              </div>
+                          </div>
+                      </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+</div>

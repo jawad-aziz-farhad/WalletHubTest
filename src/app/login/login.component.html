@@ -1,85 +1,85 @@
-<div class="h-100 d-flex align-items-center w-100 flex-1">
+<div>
   
-   <div class="h-100 w-100">
-            <div class="h-100">
-              <div class="container-fluid h-100">
-                <div class="row h-100">
-                  <div class="col-md-6">
-                  </div>
-                  <div class="col-md-6 h-100">
-                          <div class="login-section wrapper-table h-100">
-                              <div class="login-outer wrapper-cell">
-                                    <div class="logo text-center">
-                                      <img src="assets/logo.png" alt="" style="padding: 22px;height: 90px;">
-                                    </div>
-                                    <div class="twitter-button text-center">
-                                      <a class="btn btn-twitter" href='{{ SERVER_URL }}twitter-login'> <i class="fab fa-twitter mr-3"></i>Sign Up / Login with Twitter</a>
-                                    </div>
-                                    <div class="or-seperator">
-                                      <span>OR</span>
-                                    </div>
-                                    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  
-                                      <!-- <app-alert *ngIf="response" [response]="response"></app-alert> -->
-  
-                                      <div class="custom-form">
+  <app-slide-show></app-slide-show>
+    
+ <div class="">
+          <div class="">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6 bg-black">
+                        <div class="login-section wrapper-table">
+                            <div class="login-outer wrapper-cell">
+                                  <div class="logo text-light text-center">
+                                    <h2>WalletHub</h2>
+                                  </div>
+                                  <div class="twitter-button text-center">
+                                    <a class="btn btn-twitter" routerLink='/signup'> <i class="fab fa-twitter"></i>Sign Up</a>
+                                  </div>
+                                  <div class="or-seperator">
+                                    <span>OR</span>
+                                  </div>
+                                  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                                    <app-alert *ngIf="response" message="Welcome to WalletHub !!!" success="true"></app-alert>
+
+                                    <div class="custom-form">
+                                        <div class="form-group">
+                                          <label for="email">Email</label>
+                                          <input type="email" class="form-control" formControlName="email" class="form-control" placeholder="Enter email / email" [ngClass]="{ 'is-invalid': (f.email.touched && f.email.errors) || (response && !response?.success) }" >
+                                          <div *ngIf="f.email.errors || !response?.success" class="invalid-feedback">
+                                            <div *ngIf="f.email.hasError('pattern')">Email is invalid</div>
+                                            <div *ngIf="f.email.hasError('required')">Email is required</div>
+                                          </div> 
+                                        </div>
                                           <div class="form-group">
-                                            <label for="userName">Email / Username</label>
-                                            <input type="email" class="form-control" formControlName="userName" class="form-control" placeholder="Enter username / email" [ngClass]="{ 'is-invalid': (f.userName.touched && f.userName.errors) || (response && !response?.success) }" >
-                                            <div *ngIf="f.userName.errors || !response?.success" class="invalid-feedback">
-                                              <div *ngIf="f.userName.hasError('required')">Username / Email is required</div>
-                                            </div> 
+                                            <label>Password</label>
+                                            <input type="password" formControlName="password" placeholder="Enter password" class="form-control" [ngClass]="{ 'is-invalid': (f.password.touched && f.password.errors) || (response && !response?.success) }" />
+                                            <div *ngIf="f.password.errors || !response?.success" class="invalid-feedback">
+                                              <div *ngIf="f.password.hasError('required')">Password is required</div>
+                                              <div *ngIf="f.password.hasError('minlength')">Password must be 5 characters long.</div>
+                                            </div>
                                           </div>
-                                            <div class="form-group">
-                                              <label>Password</label>
-                                              <input type="password" formControlName="password" placeholder="Enter password" class="form-control" [ngClass]="{ 'is-invalid': (f.password.touched && f.password.errors) || (response && !response?.success) }" />
-                                              <div *ngIf="f.password.errors || !response?.success" class="invalid-feedback">
-                                                <div *ngIf="f.password.hasError('required')">Password is required</div>
+
+                                          <div class="form-group">
+                                            <div class="form-check form-check-inline">
+                                              <input type="checkbox" class="form-check-input" id="admin" formControlName="isAdmin">
+                                              <label class="form-check-label" for="admin">Are you admin ?</label>
+                                            </div>
+                                            <small *ngIf="f.isAdmin.value == true" id="admin" class="form-text text-danger">
+                                              Note: <strong>Admin's Home Page will be different than Normal User.</strong>
+                                            </small>
+                                          </div>
+
+                                          <div class="remember-forgot">
+                                            <div class="row">
+                                              <div class="col text-left checkbox-animated m-0">
+                                              </div>
+                                              <div class="col text-right">
+                                                <a href="#">Forgot Password?</a>
                                               </div>
                                             </div>
-                                            <div class="remember-forgot">
-                                              <div class="row mx-0">
-                                                  <div class="col text-left checkbox-animated m-0 pl-0">
-                                                      <input class="styled-checkbox" id="rememberMe" type="checkbox" value="">
-                                                      <label for="rememberMe">Remember Me</label>
-                                                  </div>
-                                                  <div class="col text-right pr-0">
-                                                      <a routerLink="/forgot-password">Forgot Password?</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="twitter-button text-center my-4">
-                                          <button class="btn btn-twitter" [disabled]="loginForm.invalid" >
-                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="submitted"></span>
-                                            <span class="sr-only" *ngIf="submitted">Loading...</span>
-                                            Login
-                                          </button>
-                                        </div>
-                                    </form>
-                                    <div class="sign-up mb-4 text-center">
-                                        Don't have an account yet?
-                                        <a routerLink="/register">Sign Up</a>
-                                    </div>
-                                    
-                                    
-                                </div>
-                            </div>
-                        </div>
-                  </div>
+                                          </div>
+                                      </div>
+                                      <div class="twitter-button text-center my-4">
+                                        <button class="btn btn-twitter" [disabled]="loginForm.invalid" >
+                                          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="submitted"></span>
+                                          <span class="sr-only" *ngIf="submitted">Loading...</span>
+                                          Login
+                                        </button>
+                                      </div>
+                                  </form>
+
+
+                                  <app-footer></app-footer>
+                              </div>
+                          </div>
+                      </div>
+              </div>
             </div>
           </div>
-      </div>
-      
-  </div>
-  <div class="login-footer d-flex align-items-center">
-      <p class="copyrightText">© 2019 Only VIPs. All rights reserved.</p>
-      <ul class="ml-auto">
-        <li><a routerLink="/about">About</a></li>
-        <li><a href="#">FAQ’s</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a routerLink="/terms-of-service">Terms</a></li>
-        <li><a routerLink="/privacy-policy">Privacy</a></li>
-      </ul>
-        
-    </div>
+  </div>  
+
+ 
+</div>
