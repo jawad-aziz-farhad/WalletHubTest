@@ -412,6 +412,12 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light {
 .black-theme header .navbar-light .navbar-nav .nav-link:focus, .black-theme header .navbar-light .navbar-nav .nav-link:hover {
     color: rgba(255, 255, 255, 0.7);
 }
+.navbar-light .navbar-nav .nav-link {
+    color: #e9ecef
+}
+.navbar-light .navbar-nav .active>.nav-link {
+    color: #a2eab2e0;
+}
 .like-comment ul{
 	list-style-type:none;
 	padding:0;

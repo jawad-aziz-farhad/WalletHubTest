@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../modal/modal.component';
-import { AuthService } from '../../_services';
+import { AuthService } from '../../../_services';
 
 const newLocal = 'yes';
 @Component({
@@ -19,10 +19,6 @@ export class HeaderComponent implements OnInit {
               private modalService: NgbModal) { }
 
   ngOnInit() {}
-
-  get isLoggedIn() {
-    return this.authService.userVal ? true : false;
-  }
 
   confirm() {
     const modalRef = this.modalService.open(ModalComponent);

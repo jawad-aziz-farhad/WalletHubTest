@@ -19,4 +19,8 @@ export class ModalComponent implements OnInit {
     this.activeModal.close({action : action});
   }
 
+  closeMoal(){
+    this.activeModal.dismiss('Cross click')
+  }
+
 }
