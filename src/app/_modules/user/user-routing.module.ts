@@ -5,7 +5,7 @@ import { UserComponent } from './user.component';
 import { NotFoundComponent } from '../shared/not-found/not-found.component';
 
 const userRoutes : Routes = [
-   { path : '' , component : UserComponent, children : [
+    { path : '' , component : UserComponent, children : [
       { path : 'home' , component : HomeComponent},
       { path : '', redirectTo : 'home' , pathMatch : 'full' },
       { path: '**', component:  NotFoundComponent } ]

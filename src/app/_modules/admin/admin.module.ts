@@ -1,27 +1,37 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
 import { AdminRoutingModule } from './admin-routing.module';
-import { ComponentsModule } from '../shared/shared.module';
-import { SidebarModule } from './sidebar/sidebar.module';
-import { NavbarModule } from './shared/navbar/navbar.module';
-import { ToastrModule } from 'ngx-toastr';
-import { FooterModule } from './shared/footer/footer.module';
-import { FixedPluginModule } from './shared/fixedplugin/fixedplugin.module';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { SharedModule } from '../shared/shared.module';
+import { AdminComponent } from './admin.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { UserComponent } from './pages/user/user.component';
+import { TableComponent } from './pages/table/table.component';
+import { TypographyComponent } from './pages/typography/typography.component';
+import { IconsComponent } from './pages/icons/icons.component';
+import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FixedpluginComponent } from './components/fixedplugin/fixedplugin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [AdminLayoutComponent ,HomeComponent],
+  declarations: [
+    AdminComponent,
+    DashboardComponent,
+    UserComponent,
+    TableComponent,
+    TypographyComponent,
+    IconsComponent,
+    NotificationsComponent,
+    SidebarComponent,
+    NavbarComponent,
+    FixedpluginComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ComponentsModule,
-    //NEW ONES
-    SidebarModule,
-    NavbarModule,
-    ToastrModule,
-    FooterModule,
-    FixedPluginModule
+    SharedModule,
+    NgbModule
 
   ]
 })

@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 
   private readonly links : Array<any> = [
     { routerLink : '#' , title : 'About'},
@@ -14,9 +14,8 @@ export class FooterComponent implements OnInit {
     { routerLink : '#' , title : 'Terms'},
     { routerLink : '#' , title : 'Privacy'}
   ]
-  constructor() { } 
 
-  ngOnInit() {
-  }
-
+  test : Date = new Date();
+  constructor() {
+  } 
 }

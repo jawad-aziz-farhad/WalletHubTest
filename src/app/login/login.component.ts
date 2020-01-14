@@ -33,11 +33,14 @@ export class LoginComponent implements OnInit {
       isAdmin  : [ false, [ Validators.required ]],
       role : ['user']
     });
-    this.loginForm.get('role').valueChanges.subscribe((result : any) => {
-      if(result.value)
+    this.loginForm.get('isAdmin').valueChanges.subscribe((result : any) => {
+      console.log(result);
+      if(result)
         this.loginForm.get('role').patchValue('admin');
       else
         this.loginForm.get('role').patchValue('user');
+      console.log( this.loginForm.value );
+      
     });
     this.loginForm.valueChanges.subscribe(result => {this.response = undefined; });
   }

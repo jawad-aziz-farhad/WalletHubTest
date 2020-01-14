@@ -1,9 +1,24 @@
-<div class="login-footer text-center">
+<!-- <div class="login-footer text-center">
   <ul class="mb-4">
     <li *ngFor="let link of links; let i=index;">
-      <!-- <a routerLink="{{link.routerLink}}">{{ link.title }}</a> -->
       <a href="#">{{ link.title }}</a>
     </li>
   </ul>
-  <p>©2020 WalletHub. All rights reserved.</p>
-</div>
+  <div class="copyright pull-right">
+    &copy; {{ test | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by <a href="https://www.wallethub.com">WalletHub</a>
+  </div>
+</div> -->
+<footer class="footer">
+  <div class="container-fluid">
+    <nav class="pull-left">
+      <ul>
+        <li *ngFor="let link of links; let i=index;">
+          <a href="#">{{ link.title }}</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="copyright pull-right">
+        &copy; {{test | date: 'yyyy'}}, made with <i class="fa fa-heart heart"></i> by <a href="https://www.wallethub.com">WalletHub</a>
+    </div>
+  </div>
+</footer>

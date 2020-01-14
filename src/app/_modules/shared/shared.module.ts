@@ -21,4 +21,4 @@ import { NotFoundComponent } from './not-found/not-found.component';
     providers: [ NgbActiveModal ]
 })
 
-export class ComponentsModule {}
+export class SharedModule {}

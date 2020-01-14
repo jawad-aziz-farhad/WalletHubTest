@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AdminModule } from './_modules/admin/admin.module';
 import { UserModule } from './_modules/user/user.module';
-import { ComponentsModule } from './_modules/shared/shared.module';
+import { SharedModule } from './_modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { ComponentsModule } from './_modules/shared/shared.module';
     ReactiveFormsModule,
     AdminModule,
     UserModule,
-    ComponentsModule
+    SharedModule
   ],
   exports: [],
   providers: [],
