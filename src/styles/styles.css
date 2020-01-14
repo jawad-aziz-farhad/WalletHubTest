@@ -334,7 +334,8 @@ header{
 }
 .user-img{
 	position:absolute;
-	margin-top: 12px;
+  margin-top: 12px;
+  margin-left: 12px;
 }
 .user-info{
     padding: 0 0 12px 0;
