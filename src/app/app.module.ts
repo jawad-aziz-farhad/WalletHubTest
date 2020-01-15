@@ -31,7 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
     UserModule,
     SharedModule
   ],
-  exports: [],
+  exports: [ ],
   providers: [AuthService, LoadStyleService ],
   bootstrap: [AppComponent]
 })

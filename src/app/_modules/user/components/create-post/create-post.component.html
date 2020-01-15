@@ -4,12 +4,12 @@
     </div>
       
     <app-alert *ngIf="isPostCreated" success="true" message="Post created successfully."></app-alert>  
-
-    <textarea #postText type="text-area" class="form-control post-send" placeholder="What's on your mind ?"></textarea>  
+    
+    <textarea #postText type="text-area" class="form-control post-send" placeholder="what's on your mind? "></textarea>  
     
     <div class="form-group mb-3 position-relative">
         
-       <button class="btn choose-image" >
+        <button class="btn choose-image" >
           <i class="fa fa-image"></i>
           <input type="file" (change)="onFileSelection($event , 'images')" accept="image/*" multiple>
           <span class="badge badge-light">{{ files.imagesCount > 0 ? files.imagesCount + ' images.' : '' }}</span>

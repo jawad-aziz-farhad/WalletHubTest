@@ -7,7 +7,7 @@ import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 
 const userRoutes : Routes = [
     { path : '' , component : UserComponent, children : [
-      { path : 'home' , component : HomeComponent } ,
+      { path : 'home' , component : HomeComponent , data : { animation : 'Post'} } ,
       { path : 'post-details' , component : PostDetailComponent } ,
       { path : '', redirectTo : 'home' , pathMatch : 'full' },
       { path: '**', component:  NotFoundComponent } ]

@@ -31,6 +31,7 @@
             "styles": [
               "src/styles.scss",
               "src/styles/bg-slider.css",
+              "src/styles/animation.css",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",

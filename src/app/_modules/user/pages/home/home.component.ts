@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IPost } from '../../_interfaces/post.interface';
 
 @Component({
@@ -6,10 +6,11 @@ import { IPost } from '../../_interfaces/post.interface';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit , OnChanges {
+export class HomeComponent implements OnInit {
 
   posts : Array<IPost> = [];
-  
+  amount: string;
+
   constructor() { }
 
   ngOnInit() {
@@ -27,15 +28,11 @@ export class HomeComponent implements OnInit , OnChanges {
     }
   }
 
-  ngOnChanges(changes : SimpleChanges){
-    console.log('Change Occured' , changes);
-  }
-
   addNewPost(post : IPost){
     post.user.userName = 'User#' + this.posts.length + 1;
     post.user.firstName = 'User';
     post.user.lastName = `${(this.posts.length + 1)}`;
-    this.posts.splice(0 , 0 , post)
+    this.posts = [ post , ...this.posts];
   }
   
 

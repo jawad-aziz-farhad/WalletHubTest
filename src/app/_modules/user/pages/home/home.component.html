@@ -25,6 +25,18 @@
                         <img src="assets/1.jpg" class="img-fluid" alt="">
                     </a>
                 </div>
+
+                <ng-content-example>
+                    <h3>What is a Ng-Conent?</h3>
+                    <p>
+                        Dynamic content. That is the simplest way to explain what ng-content provides. You use the <ng-content></ng-content> tag as a placeholder for that dynamic content, then when the template is parsed Angular will replace that placeholder tag with your content. Think of it like curly brace interpolation, but on a bigger scale. The technical term for this is “content projection" because you are projecting content from the parent component into the designated child component.
+                    </p>
+                </ng-content-example>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Currency Input</label>
+                    <input class="form-control" placeholder="Enter currency value" type="text" [ngModelOptions]="{standalone: true}" [ngModel]="amount" digitOnly currencyFormatter/>
+                </div>
             </div>
         </div>
     </div>

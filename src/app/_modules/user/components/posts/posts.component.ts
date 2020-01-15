@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IPost } from '../../_interfaces/post.interface';
 
 @Component({
@@ -7,16 +7,15 @@ import { IPost } from '../../_interfaces/post.interface';
   styleUrls: ['./posts.component.scss']
 })
 
-export class PostsComponent implements OnInit , OnChanges {
+export class PostsComponent implements OnChanges {
 
   @Input('posts') posts : Array<IPost>;
   
   constructor() { }
 
-  ngOnInit() {}
-
-  ngOnChanges(){
-    console.log('Change inside Post com' )
+  /* On Creating New Post, posts array will be modified and This Hook get Called*/
+  ngOnChanges(changes : SimpleChanges){
+    console.log('New Changes' , changes )
   }
 
 }
