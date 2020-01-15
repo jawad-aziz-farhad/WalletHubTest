@@ -23,18 +23,27 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
+            "extractCss": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
               "src/styles.scss",
+              "src/styles/bg-slider.css",
+              "node_modules/ngx-toastr/toastr.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
-              "src/styles/admin-styles/scss/paper-dashboard.scss",
-              "src/styles/styles.css",
-              "src/styles/bg-slider.css"
-              
+              {
+                "input": "src/styles/admin-styles/scss/paper-dashboard.scss",
+                "bundleName": "admin-style",
+                "inject": false
+              },
+              {
+                "input": "src/styles/styles.css",
+                "bundleName": "user-style",
+                "inject": false
+              }
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

@@ -32,7 +32,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminRoutingModule,
     SharedModule,
     NgbModule
-
   ]
 })
 export class AdminModule { }

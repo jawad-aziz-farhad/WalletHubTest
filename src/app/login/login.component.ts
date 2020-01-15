@@ -34,12 +34,10 @@ export class LoginComponent implements OnInit {
       role : ['user']
     });
     this.loginForm.get('isAdmin').valueChanges.subscribe((result : any) => {
-      console.log(result);
       if(result)
         this.loginForm.get('role').patchValue('admin');
       else
         this.loginForm.get('role').patchValue('user');
-      console.log( this.loginForm.value );
       
     });
     this.loginForm.valueChanges.subscribe(result => {this.response = undefined; });

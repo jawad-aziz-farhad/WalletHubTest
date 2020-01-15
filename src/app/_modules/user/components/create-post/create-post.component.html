@@ -1,1 +1,29 @@
-<p>create-post works!</p>
+<div class="create-post mb-5">
+    <div class="form-group mb-2 position-relative">
+        <label class="form-control" >Create Post</label>
+    </div>
+      
+    <app-alert *ngIf="isPostCreated" success="true" message="Post created successfully."></app-alert>  
+
+    <textarea #postText type="text-area" class="form-control post-send" placeholder="What's on your mind ?"></textarea>  
+    
+    <div class="form-group mb-3 position-relative">
+        
+       <button class="btn choose-image" >
+          <i class="fa fa-image"></i>
+          <input type="file" (change)="onFileSelection($event , 'images')" accept="image/*" multiple>
+          <span class="badge badge-light">{{ files.imagesCount > 0 ? files.imagesCount + ' images.' : '' }}</span>
+        </button> 
+
+        <button class="btn choose-video" [style.margin-left.px]="files.imagesCount > 0 ? '70' : '20'">
+            <i class="fa fa-video-camera"></i>
+            <input type="file" (change)="onFileSelection($event , 'video')" accept="video/*">
+            <span class="badge badge-light">{{ files.video ?  ' video selected.' : '' }}</span>
+        </button>
+
+        <button class="btn go-live" (click)="createPost()"><i class="fa fa-paper-plane"></i> 
+           Post
+        </button>
+      
+    </div>
+</div>
