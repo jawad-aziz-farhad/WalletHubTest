@@ -1,5 +1,5 @@
 <div class="tw-posts" *ngIf="posts?.length > 0">    
-    <div class="user-post clearfix animated fadeIn" *ngFor="let post of posts; let i=index;">
+    <div class="user-post clearfix animated fadeIn" *ngFor="let post of posts; let i=index;" (click)="onPostClick(post)">
     
         <div class="user-img">
             <img src="assets/img/{{ post?.user?.avatar }}" alt="">
