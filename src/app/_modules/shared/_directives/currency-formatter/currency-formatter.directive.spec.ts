@@ -1,6 +1,5 @@
 import { CurrencyFormatterDirective } from './currency-formatter.directive';
 import { ElementRef } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
 import { CustomCurrencyPipe } from '../../_pipes/custom-currency-pipe/custom-currency-pipe.pipe';
 
 describe('CurrencyFormatterDirective', () => {
