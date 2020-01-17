@@ -25,16 +25,12 @@ export class AuthService {
   }
 
   register(payload: any){
-    const url = environment.APIEndPoint + 'register';
-    return this.http.post(`${url}` , payload).pipe(map((response : any) => {
-      if(response && response.success) {
-        this.user = { success: true, payload }; // SAVING PAYLOAD DATA AS LOGGER-IN-USER
-        this.userSubject.next(this.user);
-        return this.user;
-      }
-      else  
-        return response || '';
-    }));
+    //const url = environment.APIEndPoint + 'register';
+    //return this.http.post(`${url}` , payload));
+    payload.role = 'user';
+    this.userSubject.next(payload);
+    this.user = payload;
+    return interval(3000);
   }
   
   get userVal() : BehaviorSubject<any> { return this.userSubject; }

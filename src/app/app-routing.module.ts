@@ -7,7 +7,7 @@ import { NotFoundComponent } from './_modules/shared/not-found/not-found.compone
 
 const routes: Routes = [
   { path : ''  , redirectTo : '', pathMatch: 'full' , canActivate : [ RedirectGuardService ] },
-  { path : 'login', component : LoginComponent , data : { animation : 'Login'}},
+  { path : 'login', component : LoginComponent },
   { path : 'signup', component : SignUpComponent },
   { path : 'admin' , loadChildren : () => import('./_modules/admin/admin.module').then(mod => mod.AdminModule) , canActivate : [AuthGuardService] , data : { role : 'admin' , animation : 'User'}},
   { path : 'user' , loadChildren  : () => import('./_modules/user/user.module').then(mod => mod.UserModule) , canActivate : [AuthGuardService] , data : { role : 'user' , animation : 'User'}}  ,

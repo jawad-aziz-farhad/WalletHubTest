@@ -4,6 +4,7 @@ import { AuthService } from '../_services';
 import { EMAIL_PATTERN, ERROR_MSG } from '../_constants/constants';
 import { CustomValidator } from '../_helpers/custom-validator';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -22,7 +23,8 @@ export class SignUpComponent implements OnInit {
   response: any;
   
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
     
@@ -59,21 +61,9 @@ export class SignUpComponent implements OnInit {
     this.submitted = true;  
     let register = this.authService.register(this.signUpForm.value);
     register.subscribe(response => {
-      this.submitted = false;
-      this.response = response;
-
-      if(!this.response){
-        this.response = {success : false, message : ERROR_MSG};
-        return;
-      }
-      window.scrollTo(0 , 0);
-
-      if(response.success) {       
-        setTimeout(() => {this.signUpForm.reset();}, 5000);        
-      }
+      this.router.navigateByUrl('');
     },
     error => {
-      this.submitted = false;
       console.error("Registration Error", error);
     });      
   }  
