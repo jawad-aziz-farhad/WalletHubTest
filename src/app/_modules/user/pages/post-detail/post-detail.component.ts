@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataParserService } from 'src/app/_services/data-parser/data-parser.service';
+import { IPost } from '../../_interfaces/post.interface';
 
 @Component({
   selector: 'app-post-detail',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-detail.component.scss']
 })
 export class PostDetailComponent implements OnInit {
-
-  constructor() { }
+  
+  private post: IPost;
+  
+  constructor(private dataParserService: DataParserService) { }
 
   ngOnInit() {
+    this.post = this.dataParserService.post;
   }
 
 }

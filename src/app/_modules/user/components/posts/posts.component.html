@@ -1,5 +1,5 @@
 <div class="tw-posts" *ngIf="posts?.length > 0">    
-    <div class="user-post clearfix animated fadeIn" *ngFor="let post of posts; let i=index;" (click)="onPostClick(post)">
+    <div class="user-post clearfix animated fadeIn" *ngFor="let post of posts; let i=index;" (click)="_onPostClick(post)">
     
         <div class="user-img">
             <img src="assets/img/{{ post?.user?.avatar }}" alt="">
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="javascript : void(0);" routerLink="/user/post-details">
+                <a>
                     <div class="post-text text-dark">
                         <p>{{ post?.text}}</p>
                     </div>

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import {CurrencyPipe } from '@angular/common';
@@ -22,6 +22,7 @@ import { NgContentComponent } from './components/ng-content/ng-content.component
   ],
   exports : [ NgContentComponent ],
   
-  providers : [ CurrencyPipe ]
+  providers : [ CurrencyPipe ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class UserModule { }

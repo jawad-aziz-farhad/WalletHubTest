@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -32,6 +32,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminRoutingModule,
     SharedModule,
     NgbModule
-  ]
+  ],
+  exports : [],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+
 })
 export class AdminModule { }

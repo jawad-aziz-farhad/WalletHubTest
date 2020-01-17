@@ -13,6 +13,7 @@ import { UserModule } from './_modules/user/user.module';
 import { SharedModule } from './_modules/shared/shared.module';
 import { LoadStyleService, AuthService } from './_services';
 import { ToastrModule } from 'ngx-toastr';
+import { DataParserService } from './_services/data-parser/data-parser.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     SharedModule
   ],
   exports: [ ],
-  providers: [AuthService, LoadStyleService ],
+  providers: [AuthService, LoadStyleService , DataParserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

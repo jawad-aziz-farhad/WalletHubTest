@@ -1,17 +1,14 @@
-import { Component, OnInit, ElementRef, Output, ViewChild, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { FormArray, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, ElementRef, Output, ViewChild, EventEmitter } from '@angular/core';
 import { ModalComponent } from '../../../shared/modal/modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IPost } from '../../_interfaces/post.interface';
-import { CurrencyPipe } from '@angular/common';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.scss']
 })
-export class CreatePostComponent implements OnInit ,OnChanges {
+export class CreatePostComponent {
 
   @ViewChild('postText', {static: false}) postText : ElementRef;
   @Output() onPostCreation = new EventEmitter<IPost>();
@@ -20,40 +17,8 @@ export class CreatePostComponent implements OnInit ,OnChanges {
   amount : string;
   formattedAmount: string = '';
 
-  constructor(private modalService: NgbModal, private currencyPipe: CurrencyPipe) { }
+  constructor(private modalService: NgbModal) { }
 
-  ngOnInit() { 
-  }
-
-  ngOnChanges(changes : SimpleChanges){
-    console.log('Changes',changes)    
-  }
-
-  transformAmount(event: any){
-    console.log(this.amount);
-    this.formattedAmount = this.currencyPipe.transform(this.amount, 'USD');
-    // Remove or comment this line if you dont want to show the formatted amount in the textbox.
-    event.target.value = this.formattedAmount;
-  }
-
-  
-  onInputFocus(){
-    console.log('Input focused.')
-  }
-  
-
-  onFileSelection(event : any, type: string){    
-    if(!event || !event.target || !event.target.files) return;
-    if(type == 'images')
-      this.files.images = [];
-    Object.values(event.target.files).forEach((file : any ) => {
-      if(type == 'images')
-        this.files.images.push(file);       
-      else
-        this.files.video = file;
-    });
-    this.files.imagesCount = this.files['images'].length;
-  }
   /* CREATING POST */
   createPost() {
     if(!this.postText.nativeElement.value){
@@ -65,12 +30,18 @@ export class CreatePostComponent implements OnInit ,OnChanges {
 
     const post = <IPost>{};
     post.text = this.postText.nativeElement.value;
-    post.images = this.files.images.slice();
+    post.images = ['img/bg5.jpg'];
     post.video  = this.files.video;
     post.likeCount = 0;
     post.replyCount= 0;
-    post.user = { avatar : 'default-avatar.png' , userName : '' , firstName : 'User'  , lastName : '' }
-  
+    post.user ={ 
+      avatar : 'default-avatar.png' , 
+      userName : 'Spijko', 
+      firstName: 'Marc', 
+      lastName : 'Spicer'
+    },
+    post.createdAt = new Date()
+    
     this.isPostCreated = true;
     this.clearInputFields();
     this.onPostCreation.emit(post);

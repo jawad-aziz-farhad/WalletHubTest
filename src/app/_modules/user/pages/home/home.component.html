@@ -9,7 +9,7 @@
               
             <app-create-post (onPostCreation)="addNewPost($event)"></app-create-post>
 
-            <app-posts [posts]="posts" (onPostClick)="goToDetails($evemt)"></app-posts>
+            <app-posts [posts]="posts" (onPostClick)="goToDetails($event)"></app-posts>
 
             <div class="create-post-bottom-circled" (click)="openPostCreationModal()">
                 <span><i class="fa fa-pencil"></i></span>
@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     <label for="exampleInputPassword1">Currency Input</label>
-                    <input class="form-control" placeholder="Enter currency value" type="text" [ngModelOptions]="{standalone: true}" [ngModel]="amount" digitOnly currencyFormatter/>
+                    <input class="form-control" placeholder="Enter currency value" type="text" [(ngModel)]="amount" digitOnly currencyFormatter/>
                 </div>
             </div>
         </div>

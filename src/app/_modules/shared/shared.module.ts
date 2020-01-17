@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {CurrencyPipe, DecimalPipe, PercentPipe} from '@angular/common';
 import { AlertComponent } from './alert/alert.component';
@@ -21,7 +21,9 @@ import { CustomCurrencyPipe } from './_pipes/custom-currency-pipe/custom-currenc
               SlideShowComponent , LogoComponent, NotFoundComponent , DigitOnlyDirective , CurrencyFormatterDirective , CustomCurrencyPipe ],
     imports: [CommonModule , RouterModule, NgbModule ],
     entryComponents:[ ModalComponent ],
-    providers: [ NgbActiveModal,CurrencyPipe, DecimalPipe, PercentPipe ,  CustomCurrencyPipe ]
+    providers: [ NgbActiveModal,CurrencyPipe, DecimalPipe, PercentPipe ,  CustomCurrencyPipe ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+
 })
 
 export class SharedModule {}

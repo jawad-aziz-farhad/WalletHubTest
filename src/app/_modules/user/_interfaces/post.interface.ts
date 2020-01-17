@@ -4,6 +4,7 @@ export interface IPost {
     images : string[] ,
     video : string , 
     likeCount : number , 
-    replyCount : number
+    replyCount : number,
+    createdAt: Date
   }
   

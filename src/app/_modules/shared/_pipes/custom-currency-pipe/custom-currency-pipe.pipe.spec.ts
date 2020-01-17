@@ -1,6 +1,6 @@
 import { CustomCurrencyPipe } from './custom-currency-pipe.pipe';
 
-describe('CustomCurrencyPipePipe', () => {
+describe('CustomCurrencyPipe', () => {
   it('create an instance', () => {
     const pipe = new CustomCurrencyPipe();
     expect(pipe).toBeTruthy();
